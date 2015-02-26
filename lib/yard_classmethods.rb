@@ -61,4 +61,5 @@ module YardClassmethods
 end
 
 YARD::Tags::Library.define_directive(:classmethods, YardClassmethods::Directive)
-YARD::Handlers::Ruby::ModuleHandler.prepend(YardClassmethods::Handler)
+# Module#prepend only became public in Ruby 2.1.
+YARD::Handlers::Ruby::ModuleHandler.send(:prepend, YardClassmethods::Handler)
