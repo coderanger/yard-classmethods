@@ -35,7 +35,7 @@ module YardClassmethods
     def process
       super
       # Are we looking at a ClassMethods-style module.
-      if @__is_classmethods__
+      if defined?(@__is_classmethods__)
         # Start object tree surgery.
         @__is_classmethods__.meths.each do |meth|
           if meth.name != :included
