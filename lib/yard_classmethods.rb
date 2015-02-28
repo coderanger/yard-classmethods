@@ -18,6 +18,7 @@ require 'yard/code_objects/method_object'
 require 'yard/handlers/ruby/module_handler'
 require 'yard/tags/directives'
 require 'yard/tags/library'
+require 'yard/tags/tag'
 
 
 module YardClassmethods
@@ -26,7 +27,7 @@ module YardClassmethods
       # Mark the module as private so we don't see the methods twice.
       object.visibility = :private
       # Set this instance variable as a marker to be checked down below.
-      object.instance_variable_set(:@classmethods, true)
+      handler.instance_variable_set(:@__is_classmethods__, object) if handler
     end
   end
 
@@ -34,19 +35,9 @@ module YardClassmethods
     def process
       super
       # Are we looking at a ClassMethods-style module.
-      is_classmethods = begin
-        modname = statement[0].source
-        mod = YARD::Registry.resolve(namespace, modname)
-        # Check the instance variable we set above.
-        mod['classmethods']
-      rescue Exception
-        # If anything went wrong, don't bubble errors up to the rest of YARD.
-        false
-      end
-
-      # Start object tree surgery
-      if is_classmethods
-        mod.meths.each do |meth|
+      if @__is_classmethods__
+        # Start object tree surgery.
+        @__is_classmethods__.meths.each do |meth|
           if meth.name != :included
           # Build a new method object under the parent namespace and copy all data over.
             new_meth = register meth.class.new(namespace, meth.name, :module)
