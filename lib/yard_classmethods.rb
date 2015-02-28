@@ -27,7 +27,7 @@ module YardClassmethods
       # Mark the module as private so we don't see the methods twice.
       object.visibility = :private
       # Set this instance variable as a marker to be checked down below.
-      handler.yard_classmethods_module = object if handler
+      handler.yard_classmethods_module = object if handler && handler.respond_to?(:yard_classmethods_module)
     end
   end
 
