@@ -3,7 +3,6 @@
 [![Build Status](https://img.shields.io/travis/coderanger/yard-classmethods.svg)](https://travis-ci.org/coderanger/yard-classmethods)
 [![Gem Version](https://img.shields.io/gem/v/yard-classmethods.svg)](https://rubygems.org/gems/yard-classmethods)
 [![Code Climate](https://img.shields.io/codeclimate/github/coderanger/yard-classmethods.svg)](https://codeclimate.com/github/coderanger/yard-classmethods)
-[![Gemnasium](https://img.shields.io/gemnasium/coderanger/yard-classmethods.svg)](https://gemnasium.com/coderanger/yard-classmethods)
 [![License](https://img.shields.io/badge/license-Apache_2-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
 Yard-classmethods is a [YARD](http://yardoc.org/) plugin to help with embedding
